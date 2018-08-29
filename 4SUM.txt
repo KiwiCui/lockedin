@@ -1,0 +1,32 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+        int end =  nums.length -3;
+        if (end <= 0) return result;//length less than 4
+        
+        for (int i = 0 ; i < end; i++){
+            if (nums[i] + nums[end] + nums[end+1] + nums[end+2] < target) continue;
+            if (nums[i] * 4 > target) break;
+            if (i > 0 && nums[i] == nums[i-1]) continue;
+            for (int j = i + 1; j < end + 1; j++){
+                if (nums[j] + nums[end+1] + nums[end+2] < target - nums[i])continue;
+                if (nums[j] * 3> target -nums[i]) break;
+                if (j>i+1 && nums[j] == nums[j-1]) continue;
+                int low = j+1, high = end +2;
+                while (low < high){
+                    if (nums[low] + nums[high] == target - nums[j] - nums[i]){
+                        result.add(Arrays.asList(nums[i], nums[j], nums[low], nums[high]));
+                        low ++;
+                        high--;
+                        while (low < high && nums[low] == nums[low-1])low++;
+                        while (low < high && nums[high] == nums[high+1])high--;
+                    }else if (nums[low] + nums[high] > target - nums[j] - nums[i]) high --;
+                    else low++;
+                }
+            }
+        }
+        return result;
+    }
+    
+}
