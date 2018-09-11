@@ -1,6 +1,5 @@
 package com.in.locked.barry;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,10 +35,18 @@ public class LeetCode242 {
     }
 
 
+    /*
+    *   toCharArray()的时间复杂度？
+    *   Arrays.sort()的时间复杂度？
+    *
+    */
+
     public static boolean isAnagram01(String a, String b){
         if (a.length() != b.length()){
             return false;
         }
+
+
 
         char[] aChars = a.toCharArray();
         char[] bChars = b.toCharArray();
