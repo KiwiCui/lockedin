@@ -20,7 +20,6 @@ public class LeetCode95 {
         }
         List<TreeNode> left, right;
         for (int i = start; i <= end; i++){
-
             left = genTrees(start, i - 1);
             right = genTrees(i + 1, end);
             for (TreeNode leftNode: left
@@ -29,7 +28,6 @@ public class LeetCode95 {
                     TreeNode root = new TreeNode(i);
                     root.left = leftNode;
                     root.right = rightNode;
-
                     result.add(root);
                 }
             }
@@ -42,7 +40,6 @@ public class LeetCode95 {
 
         List<TreeNode> originalNodeList = new ArrayList<>();
         originalNodeList.add(treeNode);
-
         System.out.print( "[");
         printTreeNode(originalNodeList);
         System.out.print("]");
